@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Gourmet</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#111;
+color:white;
+overflow-x:hidden;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 10%;
+background:rgba(0,0,0,.5);
+backdrop-filter:blur(15px);
+z-index:999;
+}
+
+.logo{
+font-size:30px;
+font-weight:700;
+color:#d4af37;
+}
+
+nav ul{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+nav a:hover{
+color:#d4af37;
+}
+
+.menu{
+display:none;
+font-size:35px;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.55);
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero h1{
+font-size:70px;
+margin-bottom:20px;
+}
+
+.hero p{
+font-size:20px;
+margin-bottom:30px;
+}
+
+.btn{
+display:inline-block;
+padding:15px 35px;
+background:#d4af37;
+color:black;
+font-weight:bold;
+border-radius:40px;
+text-decoration:none;
+transition:.4s;
+}
+
+.btn:hover{
+transform:translateY(-5px) scale(1.05);
+box-shadow:0 15px 40px #d4af37;
+}
+
+/* TITRES */
+
+h2{
+text-align:center;
+font-size:40px;
+margin-bottom:50px;
+color:#d4af37;
+}
+
+section{
+padding:90px 10%;
+}
+
+/* MENU */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.card{
+background:#1b1b1b;
+border-radius:20px;
+overflow:hidden;
+transition:.4s;
+cursor:pointer;
+opacity:0;
+transform:translateY(50px);
+}
+
+.card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 50px rgba(212,175,55,.35);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+transition:.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card-content{
+padding:25px;
+}
+
+.price{
+color:#d4af37;
+font-size:22px;
+margin-top:15px;
+}
+
+/* AVIS */
+
+.reviews{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.review{
+background:#1d1d1d;
+padding:30px;
+border-radius:20px;
+transition:.4s;
+opacity:0;
+transform:translateY(50px);
+}
+
+.review.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.review:hover{
+transform:scale(1.04);
+background:#252525;
+}
+
+/* FOOTER */
+
+footer{
+background:#080808;
+padding:40px;
+text-align:center;
+margin-top:60px;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.hero h1{
+font-size:42px;
+}
+
+.hero p{
+font-size:17px;
+}
+
+nav ul{
+position:absolute;
+top:80px;
+left:-100%;
+width:100%;
+background:#111;
+flex-direction:column;
+text-align:center;
+padding:30px;
+transition:.4s;
+}
+
+nav ul.active{
+left:0;
+}
+
+.menu{
+display:block;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+
+<div class="logo">Le Gourmet</div>
+
+<ul id="nav">
+<li><a href="#">Accueil</a></li>
+<li><a href="#menu">Menu</a></li>
+<li><a href="#avis">Avis</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+
+<div class="menu" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<header class="hero">
+
+<div class="hero-content">
+
+<h1>Le Gourmet</h1>
+
+<p>Une expérience gastronomique inoubliable.</p>
+
+<a href="#menu" class="btn">Découvrir notre menu</a>
+
+</div>
+
+</header>
+
+<section id="menu">
+
+<h2>Nos spécialités</h2>
+
+<div class="cards">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Salade Fraîche</h3>
+<p>Légumes bio et vinaigrette maison.</p>
+<div class="price">14 €</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Burger Signature</h3>
+<p>Viande maturée et cheddar affiné.</p>
+<div class="price">22 €</div>
+</div>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80">
+<div class="card-content">
+<h3>Steak Premium</h3>
+<p>Accompagné de pommes grenailles.</p>
+<div class="price">32 €</div>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="avis">
+
+<h2>Nos clients</h2>
+
+<div class="reviews">
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p><br>Le meilleur restaurant de la ville. Service exceptionnel.</p>
+<br><b>Marie</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p><br>Des plats incroyables et une ambiance magnifique.</p>
+<br><b>Thomas</b>
+</div>
+
+<div class="review">
+⭐⭐⭐⭐⭐
+<p><br>Une expérience gastronomique que je recommande.</p>
+<br><b>Sophie</b>
+</div>
+
+</div>
+
+</section>
+
+<footer id="contact">
+
+<h2>Le Gourmet</h2>
+
+<p>📍 Paris • France</p>
+
+<p>📞 01 23 45 67 89</p>
+
+<p>contact@legourmet.fr</p>
+
+<br>
+
+<p>© 2026 Le Gourmet</p>
+
+</footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("nav").classList.toggle("active");
+}
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:.2});
+
+document.querySelectorAll(".card,.review").forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
